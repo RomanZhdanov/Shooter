@@ -1,0 +1,47 @@
+﻿Level 2
+0
+
+
+cannon_fodder_straight, 0 
+cannon_fodder_straight, 0.5 
+cannon_fodder_straight, 1 
+cannon_fodder_straight, 1.5
+
+cannon_fodder_low, 5
+cannon_fodder_low, 5.5
+cannon_fodder_low, 6
+cannon_fodder_low, 6.5
+
+cannon_fodder, 10
+cannon_fodder, 10.5
+cannon_fodder, 11
+cannon_fodder, 11.5
+
+cannon_fodder_straight, 15
+cannon_fodder_straight, 15.5
+cannon_fodder_straight, 16
+cannon_fodder_straight, 16.5
+
+up_1, 20
+down_1, 20.5
+cannon_fodder_straight, 21
+cannon_fodder_low, 21.5
+
+cannon_fodder, 25
+cannon_fodder, 25.5
+cannon_fodder, 26
+cannon_fodder, 26.5
+
+up_1, 30
+down_1, 30.5
+up_1, 31
+down_1, 31.5
+
+cannon_fodder, 35
+cannon_fodder, 35.5
+cannon_fodder, 36
+cannon_fodder, 36.5
+cannon_fodder_low, 37
+cannon_fodder_low, 37.5
+cannon_fodder_low, 38
+cannon_fodder_low, 38.5
