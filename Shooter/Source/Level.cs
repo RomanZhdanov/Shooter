@@ -51,6 +51,7 @@ namespace Shooter
             _bulletManager = new BulletManager(_playArea);
             _effectsManager = new EffectsManager(_textureManager);
             _playerCharacter = new PlayerCharacter(_textureManager, _effectsManager, _bulletManager, _playArea);
+
             if (_gameData.NewGame)
             {
                 _playerCharacter.Lives = _startLives;
@@ -60,7 +61,8 @@ namespace Shooter
             {
                 _playerCharacter.Lives = _gameData.Lives;
                 _playerCharacter.Score = _gameData.Score;
-            }
+            }           
+
             _enemyManager = new EnemyManager(_textureManager, _effectsManager, _bulletManager, _playerCharacter, _playArea, _gameData.CurrentLevel.Enemies,  -1300);
 
             Finished = false;
@@ -105,6 +107,15 @@ namespace Shooter
 
                 if (_endingTime < 0)
                     Finished = true;
+            }
+
+
+            if (_playerCharacter.IsDead)
+            {
+                if (_background_music != null && _soundManager.IsSoundPlaying(_background_music))
+                {
+                    _soundManager.StopSound(_background_music);
+                }
             }
         }
 
