@@ -45,7 +45,7 @@ namespace Shooter
                 return;
             }
             renderer.DrawSprite(_sprite);
-            //Render_Debug();
+            RenderHitbox_Debug();
         }
 
         public void Update(double elapsedTime)

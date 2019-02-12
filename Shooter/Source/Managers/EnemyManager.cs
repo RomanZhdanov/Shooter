@@ -1,4 +1,6 @@
 ﻿using PotatoEngine;
+using Shooter.Source;
+using Shooter.Source.Enemies;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -95,57 +97,56 @@ namespace Shooter
 
         private Enemy CreateEnemyFromDef(EnemyDef definition)
         {
-            Enemy enemy = new Enemy(_textureManager, _effectsManager, _bulletManager, _playerCharacter);            
+            Enemy enemy = null;            
 
             if (definition.EnemyType == "cannon_fodder")
             {
+                enemy = new CannonFodder(_textureManager, _effectsManager, _bulletManager, _playerCharacter);
+
                 List<Vector> _pathPoints = new List<Vector>();
                 _pathPoints.Add(new Vector(1400, 0, 0));
                 _pathPoints.Add(new Vector(0, 250, 0));
                 _pathPoints.Add(new Vector(-1400, 0, 0));
 
                 enemy.Path = new Path(_pathPoints, 10);
-                enemy.Value = 100;
             }
             else if (definition.EnemyType == "cannon_fodder_low")
             {
+                enemy = new CannonFodder(_textureManager, _effectsManager, _bulletManager, _playerCharacter);
+
                 List<Vector> _pathPoints = new List<Vector>();
                 _pathPoints.Add(new Vector(1400, 0, 0));
                 _pathPoints.Add(new Vector(0, -250, 0));
                 _pathPoints.Add(new Vector(-1400, 0, 0));
 
                 enemy.Path = new Path(_pathPoints, 10);
-                enemy.Value = 100;
             }
             else if (definition.EnemyType == "cannon_fodder_straight")
             {
-                List<Vector> _pathPoints = new List<Vector>();
+                enemy = new Cruiser(_textureManager, _effectsManager, _bulletManager, _playerCharacter);
+
+                List<Vector> _pathPoints = new List<Vector>(); 
                 _pathPoints.Add(new Vector(1400, 0, 0));
                 _pathPoints.Add(new Vector(-1400, 0, 0));
-
-                enemy.Texture = _textureManager.Get("enemy_heavy");
-                enemy.Health = 100;
                 enemy.Path = new Path(_pathPoints, 16);
-                enemy.Value = 200;
             }
             else if (definition.EnemyType == "asteroid")
             {
+                enemy = new Asteroid(_textureManager, _effectsManager, _playerCharacter);
+
                 Random random = new Random();
                 double y = random.Next((int)_bounds.Top, (int)_bounds.Bottom);
 
                 List<Vector> _pathPoints = new List<Vector>();
                 _pathPoints.Add(new Vector(1400, y, 0));
                 _pathPoints.Add(new Vector(-1400, y, 0));
-
-                enemy.Texture = _textureManager.Get("asteroid");
-                enemy.SetAnimation(8, 8, 0.08, true);
-                enemy.Scale = 0.05;
-                enemy.Health = 150;
+                                
                 enemy.Path = new Path(_pathPoints, 20);
-                enemy.Value = 50;
             }
             else if (definition.EnemyType == "up_1")
             {
+                enemy = new CannonFodder(_textureManager, _effectsManager, _bulletManager, _playerCharacter);
+
                 List<Vector> _pathPoints = new List<Vector>();
                 _pathPoints.Add(new Vector(500, -375, 0));
                 _pathPoints.Add(new Vector(500, 0, 0));
@@ -153,10 +154,11 @@ namespace Shooter
                 _pathPoints.Add(new Vector(-1400, 200, 0));
 
                 enemy.Path = new Path(_pathPoints, 10);
-                enemy.Value = 150;
             }
             else if (definition.EnemyType == "down_1")
             {
+                enemy = new CannonFodder(_textureManager, _effectsManager, _bulletManager, _playerCharacter);
+
                 List<Vector> _pathPoints = new List<Vector>();
                 _pathPoints.Add(new Vector(500, 375, 0));
                 _pathPoints.Add(new Vector(500, 0, 0));
@@ -164,18 +166,16 @@ namespace Shooter
                 _pathPoints.Add(new Vector(-1400, -200, 0));
 
                 enemy.Path = new Path(_pathPoints, 10);
-                enemy.Value = 150;
             }
             else if (definition.EnemyType == "boss")
             {
+                enemy = new Boss(_textureManager, _effectsManager, _bulletManager, _playerCharacter);
+
                 List<Vector> _pathPoints = new List<Vector>();
                 _pathPoints.Add(new Vector(1400, 0, 0));
                 _pathPoints.Add(new Vector(300, 0, 0));
 
-                enemy.Health = 1000;
                 enemy.Path = new Path(_pathPoints, 10);              
-                enemy.Texture = _textureManager.Get("boss");
-                enemy.Value = 500;
             }
             else
             {

@@ -44,7 +44,7 @@ namespace Shooter
         }
 
         // Render a bounding box
-        public void Render_Debug()
+        public void RenderHitbox_Debug()
         {
             Gl.glDisable(Gl.GL_TEXTURE_2D);
 
