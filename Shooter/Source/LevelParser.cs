@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -23,7 +24,7 @@ namespace Shooter
                 string[] enemiesAndTime = lines[i].Split(",".ToArray(), StringSplitOptions.RemoveEmptyEntries);
 
                 if (enemiesAndTime.Count() != 0)
-                    _level.Enemies.Add(new EnemyDef(enemiesAndTime[0].Trim(), double.Parse(enemiesAndTime[1])));
+                    _level.Enemies.Add(new EnemyDef(enemiesAndTime[0].Trim(), double.Parse(enemiesAndTime[1], CultureInfo.InvariantCulture)));
             }
 
             return _level;
